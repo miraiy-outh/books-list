@@ -2,7 +2,7 @@ export const books = [
   {
     id: 1,
     groupId: 1,
-    title: "Риша решает!",
+    title: "Риша решает!1",
     author: "Алекс Хилл",
     image: "public/img/image1.png",
     description:
@@ -38,7 +38,7 @@ export const books = [
   {
     id: 5,
     groupId: 3,
-    title: "Риша решает!",
+    title: "Риша решает!5",
     author: "Алекс Хилл",
     image: "public/img/image1.png",
     description:
@@ -47,7 +47,7 @@ export const books = [
   {
     id: 6,
     groupId: 3,
-    title: "Риша решает!",
+    title: "Риша решает!6",
     author: "Алекс Хилл",
     image: "public/img/image1.png",
     description:
@@ -56,7 +56,7 @@ export const books = [
   {
     id: 7,
     groupId: 3,
-    title: "Риша решает!",
+    title: "Риша решает!7",
     author: "Алекс Хилл",
     image: "public/img/image1.png",
     description:
