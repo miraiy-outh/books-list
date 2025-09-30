@@ -4,6 +4,7 @@ const container = document.querySelector("#books");
 const width = window.innerWidth;
 const isMobile = width <= 375;
 
+// скролл для десктопа с шириной мобилки
 let isDown = false;
 let startX;
 let scrollStart;
@@ -23,9 +24,9 @@ container.addEventListener("mousemove", (e) => {
   const x = e.pageX;
   const walk = startX - x;
   container.scrollLeft = scrollStart + walk;
-  console.log(container.scrollLeft, walk);
 });
 
+// добавление карточки книги в дом
 function createBookCard(book) {
   const card = document.createElement("div");
   card.classList.add("card");
@@ -63,11 +64,21 @@ function createBookCard(book) {
   infoContainer.appendChild(author);
   infoContainer.appendChild(description);
 
+  const button = document.createElement("div");
+  button.classList.add("button-mobile", "button");
+  button.textContent = "Читать полностью";
+
+  if (isMobile) {
+    infoContainer.appendChild(button);
+  }
+
   card.appendChild(coverContainer);
   card.appendChild(infoContainer);
+
   container.appendChild(card);
 }
 
+// проходим по массиву книг
 function renderCards(books) {
   books.forEach((book) => {
     createBookCard(book);

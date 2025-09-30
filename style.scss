@@ -19,9 +19,20 @@
   --image-shadow: 0px 8px 16px rgba(0, 0, 0, 0.16);
 
   --button-text-color-primary: #f07c29;
+  --button-text-color-primary-hover: #ff9b4c;
+  --button-text-color-primary-active: #d95f00;
+
   --button-text-color-secondary: #212121;
-  --button-border-color-primary: #aaaaaa;
-  --button-border-color-secondary: #d3d7df;
+  --button-text-color-secondary-hover: #424242;
+  --button-text-color-secondary-active: #000000;
+
+  --button-border-color-primary: #d3d7df;
+  --button-border-color-primary-hover: #b0b6c0;
+  --button-border-color-primary-active: #999fa8;
+
+  --button-border-color-secondary: #aaaaaa;
+  --button-border-color-secondary-hover: #888888;
+  --button-border-color-secondary-active: #555555;
 }
 
 * {
@@ -31,6 +42,12 @@
 
   font-family: "Roboto";
   line-height: 1.5;
+}
+
+.button-books-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .container {
@@ -153,6 +170,55 @@
   }
 }
 
+.button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 180px;
+  height: 40px;
+  border-radius: 16px;
+
+  text-transform: uppercase;
+  font-size: var(--font-size-subtitle-mobile);
+  font-weight: var(--font-weight-bold);
+
+  cursor: pointer;
+
+  &.button-desktop {
+    border: 1px solid var(--button-border-color-secondary);
+    color: var(--button-text-color-secondary);
+    margin: 0 0 50px;
+
+    &:hover {
+      border: 1px solid var(--button-border-color-secondary-hover);
+      color: var(--button-text-color-secondary-hover);
+    }
+
+    &:active {
+      border: 1px solid var(--button-border-color-secondary-active);
+      color: var(--button-text-color-secondary-active);
+    }
+  }
+
+  &.button-mobile {
+    border: 1px solid var(--button-border-color-primary);
+    color: var(--button-text-color-primary);
+    width: 100%;
+
+    &:hover {
+      border: 1px solid var(--button-border-color-primary-hover);
+      color: var(--button-text-color-primary-hover);
+    }
+
+    &:active {
+      border: 1px solid var(--button-border-color-primary-active);
+      color: var(--button-text-color-primary-active);
+    }
+  }
+}
+
 @media (max-width: 375px) {
   .container {
     display: flex;
@@ -160,7 +226,7 @@
     gap: 16px;
 
     padding: 20px 0 24px;
-    max-width: 375px;
+    max-width: 100vw;
     min-width: 0;
 
     overflow-x: auto;
@@ -171,6 +237,11 @@
     &::-webkit-scrollbar {
       display: none;
     }
+  }
+
+  .button-books-container {
+    max-width: 375px;
+    min-width: 0;
   }
 
   .card {
@@ -223,5 +294,9 @@
         -webkit-line-clamp: 4;
       }
     }
+  }
+
+  .button-desktop {
+    display: none;
   }
 }
