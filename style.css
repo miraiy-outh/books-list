@@ -166,6 +166,7 @@
   margin: 0 0 10px 50px;
 }
 .button.button-mobile {
+  display: none;
   border: 1px solid var(--button-border-color-primary);
   color: var(--button-text-color-primary);
   width: 100%;
@@ -241,6 +242,9 @@
   }
   .button-desktop {
     display: none;
+  }
+  .button.button-mobile {
+    display: flex;
   }
   .button.shuffle-button {
     margin: 0 0 10px 20px;

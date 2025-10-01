@@ -211,6 +211,7 @@
   }
 
   &.button-mobile {
+    display: none;
     border: 1px solid var(--button-border-color-primary);
     color: var(--button-text-color-primary);
     width: 100%;
@@ -309,7 +310,13 @@
     display: none;
   }
 
-  .button.shuffle-button {
-    margin: 0 0 10px 20px;
+  .button {
+    &.button-mobile {
+      display: flex;
+    }
+
+    &.shuffle-button {
+      margin: 0 0 10px 20px;
+    }
   }
 }

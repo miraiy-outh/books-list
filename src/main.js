@@ -29,7 +29,7 @@ let startX;
 let scrollStart;
 
 container.addEventListener("mousedown", (e) => {
-  if (!isMobile) return;
+  if (!isMobile || e.target.classList.contains("button")) return;
   isDown = true;
   startX = e.pageX;
   scrollStart = container.scrollLeft;
@@ -39,20 +39,20 @@ container.addEventListener("mousedown", (e) => {
 });
 
 container.addEventListener("mouseup", () => {
-  if (!isMobile) return;
+  if (!isMobile || e.target.classList.contains("button")) return;
   isDown = false;
   container.style.cursor = "grab";
   container.style.removeProperty("user-select");
 });
 container.addEventListener("mouseleave", () => {
-  if (!isMobile) return;
+  if (!isMobile || e.target.classList.contains("button")) return;
   isDown = false;
   container.style.cursor = "grab";
   container.style.removeProperty("user-select");
 });
 
 container.addEventListener("mousemove", (e) => {
-  if (!isMobile || !isDown) return;
+  if (!isMobile || e.target.classList.contains("button") || !isDown) return;
   e.preventDefault();
   const x = e.pageX;
   const walk = startX - x;
@@ -98,12 +98,15 @@ function createBookCard(book) {
   infoContainer.appendChild(description);
 
   const button = document.createElement("div");
-  button.classList.add("button-mobile", "button");
+  button.classList.add("button", "button-mobile");
+  button.id = `button${book.id}`;
   button.textContent = "Читать полностью";
 
-  if (isMobile) {
-    infoContainer.appendChild(button);
-  }
+  infoContainer.appendChild(button);
+  button.addEventListener("click", (e) => {
+    console.log("Button clicked", e.target);
+    e.stopPropagation();
+  });
 
   card.appendChild(coverContainer);
   card.appendChild(infoContainer);
