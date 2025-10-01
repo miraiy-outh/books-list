@@ -242,6 +242,9 @@
   .button-desktop {
     display: none;
   }
+  .button.shuffle-button {
+    margin: 0 0 10px 20px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
