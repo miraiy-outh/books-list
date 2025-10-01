@@ -1,9 +1,17 @@
 import { BOOKS_PER_PAGE } from "./constants.js";
 import { books, defaultBook } from "./data.js";
+import { getGroupedBooks } from "./shuffle.js";
 
 const container = document.querySelector("#books");
 const loadMoreButton = document.querySelector("#load-more");
+const shuffleButton = document.querySelector("#shuffle");
 const width = window.innerWidth;
+
+shuffleButton.addEventListener("click", () => {
+  const shuffledBooks = getGroupedBooks(books);
+  container.innerHTML = "";
+  shuffledBooks.forEach(createBookCard);
+});
 
 let isMobile = width <= 375;
 // отслеживание изменения размера экрана
@@ -111,12 +119,11 @@ function renderCards(books) {
 // имитация загрузки новых книг
 function handleLoadMore() {
   for (let i = 0; i < BOOKS_PER_PAGE; i++) {
-    defaultBook.id = books.length + 1;
-    const oldTitle = defaultBook.title;
-    defaultBook.title = defaultBook.title + defaultBook.id;
-    books.push(defaultBook);
-    createBookCard(defaultBook);
-    defaultBook.title = oldTitle;
+    const newBook = Object.assign({}, defaultBook);
+    newBook.id = books.length + 1;
+    newBook.title = newBook.title + newBook.id;
+    books.push(newBook);
+    createBookCard(newBook);
   }
 }
 

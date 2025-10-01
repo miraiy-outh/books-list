@@ -186,10 +186,10 @@
 
   cursor: pointer;
 
-  &.button-desktop {
+  &.button-desktop,
+  &.shuffle-button {
     border: 1px solid var(--button-border-color-secondary);
     color: var(--button-text-color-secondary);
-    margin: 0 0 50px;
 
     &:hover {
       border: 1px solid var(--button-border-color-secondary-hover);
@@ -200,6 +200,14 @@
       border: 1px solid var(--button-border-color-secondary-active);
       color: var(--button-text-color-secondary-active);
     }
+  }
+
+  &.button-desktop {
+    margin: 0 0 50px;
+  }
+
+  &.shuffle-button {
+    margin: 0 0 10px 50px;
   }
 
   &.button-mobile {

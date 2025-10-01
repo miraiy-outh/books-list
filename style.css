@@ -147,18 +147,23 @@
   font-weight: var(--font-weight-bold);
   cursor: pointer;
 }
-.button.button-desktop {
+.button.button-desktop, .button.shuffle-button {
   border: 1px solid var(--button-border-color-secondary);
   color: var(--button-text-color-secondary);
-  margin: 0 0 50px;
 }
-.button.button-desktop:hover {
+.button.button-desktop:hover, .button.shuffle-button:hover {
   border: 1px solid var(--button-border-color-secondary-hover);
   color: var(--button-text-color-secondary-hover);
 }
-.button.button-desktop:active {
+.button.button-desktop:active, .button.shuffle-button:active {
   border: 1px solid var(--button-border-color-secondary-active);
   color: var(--button-text-color-secondary-active);
+}
+.button.button-desktop {
+  margin: 0 0 50px;
+}
+.button.shuffle-button {
+  margin: 0 0 10px 50px;
 }
 .button.button-mobile {
   border: 1px solid var(--button-border-color-primary);
