@@ -39,20 +39,24 @@ container.addEventListener("mousedown", (e) => {
 });
 
 container.addEventListener("mouseup", () => {
-  if (!isMobile || e.target.classList.contains("button")) return;
+  if (!isMobile) return;
   isDown = false;
   container.style.cursor = "grab";
   container.style.removeProperty("user-select");
 });
 container.addEventListener("mouseleave", () => {
-  if (!isMobile || e.target.classList.contains("button")) return;
+  if (!isMobile) return;
   isDown = false;
   container.style.cursor = "grab";
   container.style.removeProperty("user-select");
 });
 
 container.addEventListener("mousemove", (e) => {
-  if (!isMobile || e.target.classList.contains("button") || !isDown) return;
+  if (!isMobile) {
+    container.style.cursor = "default";
+    return;
+  }
+  if (e.target.classList.contains("button") || !isDown) return;
   e.preventDefault();
   const x = e.pageX;
   const walk = startX - x;
