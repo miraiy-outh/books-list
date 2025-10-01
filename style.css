@@ -63,7 +63,7 @@
   align-items: center;
   width: 100%;
   height: 238px;
-  background-image: url("public/img/background.png");
+  background-image: url("/img/background.png");
   background-size: cover;
 }
 .card__cover__image {
@@ -147,15 +147,18 @@
   font-weight: var(--font-weight-bold);
   cursor: pointer;
 }
-.button.button-desktop, .button.shuffle-button {
+.button.button-desktop,
+.button.shuffle-button {
   border: 1px solid var(--button-border-color-secondary);
   color: var(--button-text-color-secondary);
 }
-.button.button-desktop:hover, .button.shuffle-button:hover {
+.button.button-desktop:hover,
+.button.shuffle-button:hover {
   border: 1px solid var(--button-border-color-secondary-hover);
   color: var(--button-text-color-secondary-hover);
 }
-.button.button-desktop:active, .button.shuffle-button:active {
+.button.button-desktop:active,
+.button.shuffle-button:active {
   border: 1px solid var(--button-border-color-secondary-active);
   color: var(--button-text-color-secondary-active);
 }
