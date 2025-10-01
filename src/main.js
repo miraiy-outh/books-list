@@ -29,6 +29,7 @@ let startX;
 let scrollStart;
 
 container.addEventListener("mousedown", (e) => {
+  if (!isMobile) return;
   isDown = true;
   startX = e.pageX;
   scrollStart = container.scrollLeft;
@@ -38,18 +39,20 @@ container.addEventListener("mousedown", (e) => {
 });
 
 container.addEventListener("mouseup", () => {
+  if (!isMobile) return;
   isDown = false;
   container.style.cursor = "grab";
   container.style.removeProperty("user-select");
 });
 container.addEventListener("mouseleave", () => {
+  if (!isMobile) return;
   isDown = false;
   container.style.cursor = "grab";
   container.style.removeProperty("user-select");
 });
 
 container.addEventListener("mousemove", (e) => {
-  if (!isDown) return;
+  if (!isMobile || !isDown) return;
   e.preventDefault();
   const x = e.pageX;
   const walk = startX - x;
