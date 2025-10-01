@@ -252,6 +252,7 @@
     box-shadow: var(--mobile-shadow);
 
     scroll-snap-align: start;
+    cursor: grab;
 
     &:first-child {
       margin-left: 16px;

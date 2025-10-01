@@ -200,6 +200,7 @@
     border-radius: 10px;
     box-shadow: var(--mobile-shadow);
     scroll-snap-align: start;
+    cursor: grab;
   }
   .card:first-child {
     margin-left: 16px;

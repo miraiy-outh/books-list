@@ -1,8 +1,19 @@
-import { books } from "./data.js";
+import { BOOKS_PER_PAGE } from "./constants.js";
+import { books, defaultBook } from "./data.js";
 
 const container = document.querySelector("#books");
+const loadMoreButton = document.querySelector("#load-more");
 const width = window.innerWidth;
-const isMobile = width <= 375;
+
+let isMobile = width <= 375;
+// отслеживание изменения размера экрана
+function handleResize() {
+  const newIsMobile = window.innerWidth <= 375;
+  if (newIsMobile !== isMobile) {
+    isMobile = newIsMobile;
+    renderCards(books); // заново отрисовать
+  }
+}
 
 // скролл для десктопа с шириной мобилки
 let isDown = false;
@@ -13,10 +24,21 @@ container.addEventListener("mousedown", (e) => {
   isDown = true;
   startX = e.pageX;
   scrollStart = container.scrollLeft;
+
+  container.style.cursor = "grabbing";
+  container.style.userSelect = "none";
 });
 
-container.addEventListener("mouseup", () => (isDown = false));
-container.addEventListener("mouseleave", () => (isDown = false));
+container.addEventListener("mouseup", () => {
+  isDown = false;
+  container.style.cursor = "grab";
+  container.style.removeProperty("user-select");
+});
+container.addEventListener("mouseleave", () => {
+  isDown = false;
+  container.style.cursor = "grab";
+  container.style.removeProperty("user-select");
+});
 
 container.addEventListener("mousemove", (e) => {
   if (!isDown) return;
@@ -80,14 +102,25 @@ function createBookCard(book) {
 
 // проходим по массиву книг
 function renderCards(books) {
+  container.innerHTML = "";
   books.forEach((book) => {
     createBookCard(book);
   });
 }
 
-function initLoadMore() {}
+function handleLoadMore() {
+  for (let i = 0; i < BOOKS_PER_PAGE; i++) {
+    defaultBook.id = books.length + 1;
+    const oldTitle = defaultBook.title;
+    defaultBook.title = defaultBook.title + defaultBook.id;
+    books.push(defaultBook);
+    createBookCard(defaultBook);
+    defaultBook.title = oldTitle;
+  }
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   renderCards(books);
-  initLoadMore();
+  window.addEventListener("resize", handleResize);
+  loadMoreButton.addEventListener("click", handleLoadMore);
 });
