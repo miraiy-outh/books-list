@@ -108,6 +108,7 @@ function renderCards(books) {
   });
 }
 
+// имитация загрузки новых книг
 function handleLoadMore() {
   for (let i = 0; i < BOOKS_PER_PAGE; i++) {
     defaultBook.id = books.length + 1;
